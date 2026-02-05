@@ -20,13 +20,20 @@ interface RuleCandidate {
 type MapDomain = Map<string, Set<Rule>>; // Rule[]>;
 type MapRole = Map<string, MapDomain>;
 
+const ERR_INVALID_CONTEXT = new Error("Provided context type is not valid");
+
 const ANY = "*";
 
 class Policy {
 	private readonly rules: MapRole = new Map();
 	private readonly cache = new Map<CacheKey, boolean>(); // new Map<CacheKey, CheckResult>();
 
-	set(r: string, d: string, a: string, e: Effect, c?: Context): void {
+	set(r: string, d: string, a: string, e: Effect, c: Context = {}): void {
+		if (typeof c !== "object") {
+			// switch to assert?
+			throw ERR_INVALID_CONTEXT;
+		}
+
 		let dMap = this.rules.get(r);
 		if (dMap === undefined) {
 			dMap = new Map();
@@ -48,7 +55,12 @@ class Policy {
 	}
 
 	// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: revisit
-	can(r: string, d: string, a: string, c?: Context): boolean {
+	can(r: string, d: string, a: string, c: Context = {}): boolean {
+		if (typeof c !== "object") {
+			// switch to assert?
+			throw ERR_INVALID_CONTEXT;
+		}
+
 		const cacheKey = this.key(r, d, a, c);
 		const cached = this.cache.get(cacheKey);
 		if (cached !== undefined) {
@@ -103,20 +115,18 @@ class Policy {
 		return result;
 	}
 
-	private key(r: string, d: string, a: string, c?: Context): CacheKey {
-		const context =
-			c === undefined
-				? "undefined"
-				: Object.entries(c)
-						.sort(([kA], [kB]) => {
-							return kA.localeCompare(kB);
-						})
-						.map(([k, v]) => {
-							return `${k}:${v}`;
-						})
-						.join("|");
-		const result = `${r}|${d}|${a}|${context}`;
+	private key(r: string, d: string, a: string, c: Context = {}): CacheKey {
+		const cEntries = Object.entries(c).sort(([kA], [kB]) => {
+			return kA.localeCompare(kB);
+		});
 
+		const cItems: string[] = [];
+		for (const [k, v] of cEntries) {
+			cItems.push(`${k}:${v}`);
+		}
+
+		const cStr = `{${cItems.join("|")}}`;
+		const result = `${r}|${d}|${a}|${cStr}`;
 		return result;
 	}
 

@@ -153,6 +153,36 @@ describe("manual assignment -- new", () => {
 		expect(policy.can("admin", "page", "edit")).toBe(false);
 		expect(policy.can("admin", "page", "drop")).toBe(false);
 	});
+
+	it("empty-context not-set", () => {
+		const policy = new Policy();
+		policy.set("admin", "*", "*", "allow");
+
+		expect(policy.can("admin", "access_role", "view")).toBe(true);
+		expect(policy.can("admin", "access_role", "view", {})).toBe(true);
+		expect(policy.can("admin", "access_role", "view", undefined)).toBe(true);
+		expect(policy.can("admin", "access_role", "view", { "henlo": "aaa" })).toBe(true);
+	});
+
+	it("empty-context explicit", () => {
+		const policy = new Policy();
+		policy.set("admin", "*", "*", "allow", {});
+
+		expect(policy.can("admin", "access_role", "view")).toBe(true);
+		expect(policy.can("admin", "access_role", "view", {})).toBe(true);
+		expect(policy.can("admin", "access_role", "view", undefined)).toBe(true);
+		expect(policy.can("admin", "access_role", "view", { "henlo": "aaa" })).toBe(true);
+	});
+
+	it("empty-context undefined", () => {
+		const policy = new Policy();
+		policy.set("admin", "*", "*", "allow", undefined);
+
+		expect(policy.can("admin", "access_role", "view")).toBe(true);
+		expect(policy.can("admin", "access_role", "view", {})).toBe(true);
+		expect(policy.can("admin", "access_role", "view", undefined)).toBe(true);
+		expect(policy.can("admin", "access_role", "view", { "henlo": "aaa" })).toBe(true);
+	});
 });
 
 describe("inferred assignment -- old", () => {

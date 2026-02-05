@@ -1,7 +1,8 @@
 {
 	"name": "@deanrih/ts-lib-authority",
 	"description": "A helper library for handling permissions.",
-	"version": "2.0.0-beta.1",
+	"version": "2.0.0-beta.2",
+	"preview": true,
 	"type": "module",
 	"license": "MIT",
 	"homepage": "https://deanrih.id/projects/self/ts-lib-authority",
