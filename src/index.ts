@@ -11,5 +11,8 @@
  * @version     1.0.0
  * @copyright   Dean Rikrik Ichsan Hakiki 2025
  */
+/** biome-ignore-all lint/performance/noReExportAll: library */
+/** biome-ignore-all lint/performance/noBarrelFile: library */
 
 export * from "./internal/impl.internal";
+export * from "./internal/new.internal";

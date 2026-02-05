@@ -1,9 +1,7 @@
 {
 	"compilerOptions": {
 		// Enable latest features
-		"lib": [
-			"ESNext",
-		],
+		"lib": ["ESNext"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "force",
@@ -18,9 +16,35 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"noFallthroughCasesInSwitch": true,
+		// "noUncheckedIndexedAccess": true,
 		// Some stricter flags (disabled by default)
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noPropertyAccessFromIndexSignature": true
-	}
+		"noPropertyAccessFromIndexSignature": true,
+		// Custom
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"composite": true,
+		"downlevelIteration": false,
+		"importHelpers": true,
+		"incremental": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"noImplicitAny": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUncheckedSideEffectImports": true,
+		"removeComments": true,
+		"resolveJsonModule": true,
+		// "skipDefaultLibCheck": true,
+		"strictBindCallApply": true,
+		// Path
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["src/*"]
+		}
+	},
+	"include": ["src/**/*.ts", "test/**/*.ts"],
+	"exclude": ["node_modules"]
 }
