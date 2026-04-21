@@ -125,4 +125,6 @@ class Policy {
 	}
 }
 
+export type { ActionKey, Context, ContextKey, ContextVal, DomainKey, RoleKey };
+
 export { generateContextKey, generateRdaKey, isContextMatch, isEmptyObject, Policy };
