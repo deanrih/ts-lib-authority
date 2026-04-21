@@ -1,11 +1,13 @@
 {
 	"compilerOptions": {
-		// Enable latest features
-		"lib": ["ESNext"],
+		// Environment setup & latest features
+		"lib": [
+			"ESNext"
+		],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "force",
-		"jsx": "react-jsx",
+		"jsx": "preserve",
 		"allowJs": true,
 		// Bundler mode
 		"moduleResolution": "bundler",
@@ -13,10 +15,11 @@
 		"verbatimModuleSyntax": true,
 		"noEmit": true,
 		// Best practices
-		"strict": true,
+		// true by default
+		// "strict": true,
 		"skipLibCheck": true,
 		"noFallthroughCasesInSwitch": true,
-		// "noUncheckedIndexedAccess": true,
+		"noUncheckedIndexedAccess": true,
 		// Some stricter flags (disabled by default)
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -26,7 +29,8 @@
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
 		"composite": true,
-		"downlevelIteration": false,
+		// deprecated
+		// "downlevelIteration": false,
 		"importHelpers": true,
 		"incremental": true,
 		"forceConsistentCasingInFileNames": true,
@@ -34,17 +38,33 @@
 		"noImplicitAny": true,
 		"noImplicitOverride": true,
 		"noImplicitReturns": true,
-		"noUncheckedSideEffectImports": true,
+		// true by default
+		// "noUncheckedSideEffectImports": true,
 		"removeComments": true,
 		"resolveJsonModule": true,
+		// reason: use skipLibCheck
 		// "skipDefaultLibCheck": true,
 		"strictBindCallApply": true,
+		"types": [
+			"bun"
+			// "node",
+		],
 		// Path
-		"baseUrl": ".",
+		// deprecated
+		// "baseUrl": ".",
 		"paths": {
-			"~/*": ["src/*"]
-		}
+			"~/*": [
+				"./src/*"
+			]
+		},
+		"rootDir": "./src"
 	},
-	"include": ["src/**/*.ts", "test/**/*.ts"],
-	"exclude": ["node_modules"]
+	"include": [
+		"./src/**/*.ts",
+		"../example/**/*.ts",
+		"../qa/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
 }

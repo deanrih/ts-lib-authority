@@ -3,14 +3,14 @@
 .gitignore
 .vscode
 
-build.ts
-bun.lockb
-tsconfig.json
 biome.json
+tsconfig.json
+bunup.config.ts
+bun.lock
 
 *.tgz
 
 node_modules
 example
-test
 src
+test

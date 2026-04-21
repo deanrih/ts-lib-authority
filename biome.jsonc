@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -9,12 +9,12 @@
 		"ignoreUnknown": true
 	},
 	"formatter": {
-		"attributePosition": "multiline",
 		"enabled": true,
+		"attributePosition": "multiline",
 		"formatWithErrors": true,
 		"indentStyle": "tab",
 		"lineEnding": "lf",
-		"lineWidth": 120,
+		"lineWidth": 128,
 		"useEditorconfig": true
 	},
 	"linter": {
@@ -44,20 +44,23 @@
 						"allowedIdentifiers": []
 					}
 				},
+				"noUselessCatchBinding": "error",
 				"noUselessStringConcat": "error",
+				"noUselessUndefined": "error",
 				"noVoid": "error",
-				"useSimplifiedLogicExpression": "error",
 				"useLiteralKeys": "off",
+				"useMaxParams": {
+					"level": "error",
+					"options": {
+						"max": 8
+					}
+				},
+				"useSimplifiedLogicExpression": "error",
 				"useWhile": "error"
 			},
 			"correctness": {
 				"recommended": true,
-				"noConstantMathMinMaxClamp": "error",
 				"noGlobalDirnameFilename": "error",
-				"noInvalidUseBeforeDeclaration": "error",
-				"noPrecisionLoss": "error",
-				"noUndeclaredDependencies": "error",
-				"noUndeclaredVariables": "error",
 				"noUnusedFunctionParameters": "error",
 				"noUnusedImports": "error",
 				"useJsonImportAttributes": "error",
@@ -65,11 +68,28 @@
 			},
 			"nursery": {
 				"recommended": true,
-				"noDeprecatedImports": "error",
+				"noConditionalExpect": "error",
 				"noDivRegex": "error",
-				"noDuplicateDependencies": "error",
+				"noDrizzleDeleteWithoutWhere": {
+					"level": "error",
+					"options": {
+						// "drizzleObjectName": [
+						// 	"db",
+						// 	"tx"
+						// ]
+					}
+				},
+				"noDrizzleUpdateWithoutWhere": {
+					"level": "error",
+					"options": {
+						// "drizzleObjectName": [
+						// 	"db",
+						// 	"tx"
+						// ]
+					}
+				},
 				"noDuplicateEnumValues": "error",
-				"noEmptySource": "error",
+				"noEmptyObjectKeys": "error",
 				"noEqualsToNull": "error",
 				"noExcessiveClassesPerFile": {
 					"level": "error",
@@ -86,58 +106,79 @@
 				"noFloatingClasses": "error",
 				"noFloatingPromises": "error",
 				"noForIn": "error",
-				"noImportCycles": "error",
+				"noIdenticalTestTitle": "error",
+				"noImpliedEval": "error",
 				"noIncrementDecrement": "error",
 				"noMisusedPromises": "error",
+				"noMisleadingReturnType": "error",
 				"noMultiAssign": "error",
 				"noMultiStr": "error",
+				"noNestedPromises": "error",
 				"noParametersOnlyUsedInRecursion": "error",
+				// "noPlaywrightElementHandle": "error",
+				// "noPlaywrightEval": "error",
+				// "noPlaywrightForceOption": "error",
+				// "noPlaywrightMissingAwait": "error",
+				// "noPlaywrightNetworkidle": "error",
+				// "noPlaywrightPagePause": "error",
+				// "noPlaywrightUselessAwait": "error",
+				// "noPlaywrightWaitForNavigation": "error",
+				// "noPlaywrightWaitForSelector": "error",
+				// "noPlaywrightWaitForTimeout": "error",
 				"noProto": "error",
 				"noRedundantDefaultExport": "error",
 				"noShadow": "error",
+				"noTopLevelLiterals": "error",
 				"noUnknownAttribute": "error",
 				"noUnnecessaryConditions": "error",
-				"noUnusedExpressions": "error",
-				"noUselessCatchBinding": "error",
-				"noUselessUndefined": "error",
+				"noUnsafePlusOperands": "error",
+				"noUntrustedLicenses": {
+					"level": "error",
+					"options": {
+						"allow": [],
+						"deny": [],
+						// "ignoreDeprecated": true,
+						"requireFsfLibre": true,
+						"requireOsiApproved": true
+					}
+				},
+				"noUselessReturn": "error",
+				"noUselessTypeConversion": "error",
+				"useArraySome": "error",
 				"useArraySortCompare": "error",
 				"useAwaitThenable": "off",
-				"useConsistentArrowReturn": {
-					"level": "error",
-					"fix": "safe",
-					"options": {
-						"style": "always"
-					}
-				},
 				"useConsistentEnumValueType": "error",
 				"useConsistentMethodSignatures": "error",
-				"useDeprecatedDate": "error",
-				"useDestructuring": "info",
+				"useConsistentTestIt": "error",
+				"useDestructuring": "error",
+				"useDisposables": "error",
 				"useErrorCause": "error",
 				"useExhaustiveSwitchCases": "error",
+				"useExpect": "error",
+				"useExplicitReturnType": "error",
 				"useFind": "error",
 				"useGlobalThis": "error",
-				"useMaxParams": {
-					"level": "error",
-					"options": {
-						"max": 8
-					}
-				},
+				"useImportsFirst": "error",
+				// "usePlaywrightValidDescribeCallback": "error",
+				"useNamedCaptureGroup": "error",
+				"useNullishCoalescing": "error",
+				"useReduceTypeParameter": "error",
 				"useRegexpExec": "error",
 				"useRequiredScripts": {
 					"level": "error",
 					"options": {
 						"requiredScripts": [
-							"build",
-							"case:dev",
-							"check",
 							"dev",
-							"release",
-							"test"
+							"test",
+							"build",
+							"release"
 						]
 					}
 				},
-				"useSpread": "error"
+				"useSpread": "error",
+				"useStringStartsEndsWith": "error",
+				"useUnicodeRegex": "error",
+				"useVarsOnTop": "error"
 			},
 			"performance": {
 				"recommended": true,
@@ -155,7 +196,7 @@
 				"noSecrets": {
 					"level": "error",
 					"options": {
-						"entropyThreshold": 41
+						"entropyThreshold": 42
 					}
 				}
 			},
@@ -211,6 +252,13 @@
 					"level": "error",
 					"options": {
 						"syntax": "shorthand"
+					}
+				},
+				"useConsistentArrowReturn": {
+					"level": "error",
+					"fix": "safe",
+					"options": {
+						"style": "always"
 					}
 				},
 				"useConsistentBuiltinInstantiation": "error",
@@ -287,16 +335,22 @@
 					}
 				},
 				"noConsole": "error",
+				"noDeprecatedImports": "error",
+				"noDuplicateDependencies": "error",
 				"noDuplicateTestHooks": "error",
 				"noEmptyBlockStatements": "error",
 				"noEmptyInterface": "error",
+				"noEmptySource": "error",
 				"noEvolvingTypes": "error",
 				"noExplicitAny": "error",
 				"noExportsInTest": "error",
 				"noFocusedTests": "error",
+				"noImportCycles": "error",
+				"noIrregularWhitespace": "error",
 				"noMisplacedAssertion": "error",
 				"noSkippedTests": "error",
 				"noUnassignedVariables": "error",
+				"noUnusedExpressions": "error",
 				"noVar": "error",
 				"useAwait": "error",
 				"useErrorMessage": "error",
@@ -318,7 +372,7 @@
 			"lineWidth": 128
 		},
 		"globals": [
-			"bun"
+			"Bun"
 		]
 	},
 	"json": {
@@ -376,6 +430,7 @@
 				"useSortedKeys": {
 					"level": "off",
 					"options": {
+						"groupByNesting": true,
 						"sortOrder": "natural"
 					}
 				}

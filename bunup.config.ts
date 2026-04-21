@@ -10,7 +10,7 @@ export default defineConfig({
 	minify: true,
 	target: "bun",
 	format: "esm",
-	outDir: "./dist",
+	outDir: "./dst",
 	splitting: true, //nodeProtocol
 	// exports: true,
 	// noExternal: []
